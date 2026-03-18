@@ -1,190 +1,222 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-
 :root {
-  --bg: #f7f9fc;
-  --surface: #ffffff;
-  --border: #e0e7ff;
-  --text-primary: #102a43;
-  --text-secondary: #627d98;
-  --accent: #3b82f6;
-  --accent-light: #93c5fd;
-  --danger: #ef4444;
-  --shadow: rgba(59, 130, 246, 0.3);
+  --bg-start: #0a1e3f;
+  --bg-end: #000000;
+  --input-bg: #112d57;
+  --input-border: #204080;
+  --text-primary: #d9e6f2;
+  --text-secondary: #7a9edc;
+  --accent: #3a9df8;
+  --overlay-bg: rgba(10, 30, 63, 0.75);
+  --btn-hover-bg: #1a7cf0;
 }
 
-
+/* Fundo com gradiente vertical */
 body {
-  background-color: var(--bg);
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
   color: var(--text-primary);
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px 60px;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 36px;
 }
 
-
-h2 {
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin-bottom: 24px;
-  letter-spacing: 0.03em;
-}
-
-h3 {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+/* Form de busca */
+form#formBusca {
+  display: flex;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 600px;
   margin-bottom: 16px;
+  border: 2px solid var(--accent);
+}
+
+form#formBusca input#busca {
+  flex: 1;
+  padding: 14px 24px;
+  font-size: 1.2rem;
+  background: var(--input-bg);
+  border: none;
+  color: var(--text-primary);
+  border-radius: 16px 0 0 16px;
+  outline: none;
+}
+
+form#formBusca input#busca::placeholder {
+  color: var(--text-secondary);
+}
+
+form#formBusca input#busca:focus {
+  border: none;
+  outline: 2px solid var(--accent);
+}
+
+form#formBusca button {
+  background: var(--accent);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0 32px;
+  cursor: pointer;
+  border-radius: 0 16px 16px 0;
+  transition: background-color 0.3s ease;
+}
+
+form#formBusca button:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+/* Títulos */
+h3 {
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-bottom: 2px solid var(--accent-light);
-  padding-bottom: 6px;
+  font-weight: 700;
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+  margin: 48px 0 24px 0;
+  color: var(--text-secondary);
 }
 
-
-input#busca {
-  width: 100%;
-  padding: 14px 18px;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: 2px solid var(--border);
-  background: var(--surface);
-  color: var(--text-primary);
-  box-shadow: 0 4px 8px var(--shadow);
-  transition: border-color 0.3s ease;
-}
-
-input#busca:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 10px var(--accent-light);
-}
-
-
-button {
-  margin-top: 16px;
-  padding: 12px 18px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 15px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-  background: var(--accent-light);
-  box-shadow: 0 6px 20px var(--accent-light);
-  transform: translateY(-2px);
-}
-
-
+/* Grid dos resultados */
 #resultados {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  gap: 20px;
 }
 
-
-.card {
-  background: var(--surface);
+/* Card das séries */
+.serie-card {
+  position: relative;
   border-radius: 16px;
-  padding: 18px 24px;
-  box-shadow: 0 8px 20px var(--shadow);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
   cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: 0 16px 40px var(--accent-light);
-  transform: translateY(-6px);
-}
-
-
-.card::before {
-  content: "📺";
-  margin-right: 12px;
-  font-size: 1.3rem;
-}
-
-.card > button {
-  background: transparent;
+  height: 225px;
+  background-color: var(--input-bg);
   border: 2px solid var(--accent);
-  color: var(--accent);
-  font-weight: 600;
-  padding: 6px 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.serie-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--btn-hover-bg);
+}
+
+/* Imagem da série */
+.serie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.55);
+  transition: filter 0.3s ease;
+}
+
+.serie-card:hover img {
+  filter: brightness(0.75);
+}
+
+/* Overlay com texto e botão */
+.serie-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--overlay-bg);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Nome da série */
+.serie-name {
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  text-shadow: none; /* remove sombra */
+}
+
+/* Botão favoritar */
+.serie-overlay button {
+  align-self: flex-start;
+  background: transparent;
+  border: 1.5px solid white;
+  padding: 6px 12px;
   border-radius: 10px;
+  color: white;
+  font-weight: 600;
   font-size: 0.9rem;
+  cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card > button:hover {
-  background-color: var(--accent);
+.serie-overlay button:hover {
+  background: var(--accent);
   color: white;
-  box-shadow: 0 6px 15px var(--accent-light);
 }
 
-
+/* Lista de favoritos */
 #favoritos {
   list-style: none;
-  margin-top: 32px;
-  border-top: 2px solid var(--border);
-  padding-top: 24px;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 24px;
+  color: var(--text-primary);
 }
 
-
+/* Item de favorito com imagem */
 #favoritos li {
-  background: var(--surface);
-  padding: 14px 24px;
-  border-radius: 14px;
-  box-shadow: 0 4px 15px var(--shadow);
+  background: var(--input-bg);
+  padding: 8px 12px 8px 8px;
+  border-radius: 24px;
   font-weight: 600;
-  font-size: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  transition: background-color 0.3s ease;
+  gap: 12px;
+  max-width: max-content;
   cursor: default;
+  border: 2px solid var(--accent);
 }
 
-#favoritos li:hover {
-  background-color: var(--accent-light);
-  color: white;
+/* Imagem do favorito */
+#favoritos li img {
+  width: 48px;
+  height: 68px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
+/* Nome do favorito */
+#favoritos li span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
 
+/* Botão remover favorito */
 #favoritos li button {
-  background: var(--danger);
+  background: var(--accent);
   border: none;
   color: white;
-  font-weight: 600;
-  padding: 6px 14px;
-  font-size: 0.85rem;
-  border-radius: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #favoritos li button:hover {
-  background-color: #f87171;
+  background: var(--btn-hover-bg);
+  transform: scale(1.1);
 }

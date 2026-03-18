@@ -1,20 +1,24 @@
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>App Séries</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h2>Buscar Séries</h2>
-    <input type="email" placeholder="Buscar" id="busca" />
-    <button onclick="buscar()">Buscar</button>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>App Séries</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Buscar Séries</h2>
 
-    <h3>Resultados</h3>
-    <div id="resultados"></div>
+  <form id="formBusca" onsubmit="event.preventDefault(); buscar();">
+    <input type="text" id="busca" placeholder="Buscar série..." autocomplete="off" />
+    <button type="submit">Buscar</button>
+  </form>
 
-    <h3>Favoritos</h3>
-    <ul id="favoritos"></ul>
+  <h3>Resultados</h3>
+  <div id="resultados"></div>
 
-    <script src="script.js"></script>
-  </body>
+  <h3>Favoritos</h3>
+  <ul id="favoritos"></ul>
+
+  <script src="script.js"></script>
+</body>
 </html>
