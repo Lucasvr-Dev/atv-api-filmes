@@ -5,9 +5,9 @@
   --input-border: #204080;
   --text-primary: #d9e6f2;
   --text-secondary: #7a9edc;
-  --accent: #3a9df8;
+  --accent: #2563eb;       /* Azul royal escuro para melhor contraste */
   --overlay-bg: rgba(10, 30, 63, 0.75);
-  --btn-hover-bg: #1a7cf0;
+  --btn-hover-bg: #1e40af; /* Azul hover mais escuro */
 }
 
 /* Fundo com gradiente vertical */
