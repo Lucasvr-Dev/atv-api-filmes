@@ -1,0 +1,16 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "App Séries",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "APS",
+  "start_url": "index.html",
+  "theme_color": "#ffffff",
+  "description": "App de busca de séries",
+  "categories": [
+    "entertainment",
+    "utilities"
+  ]
+}
